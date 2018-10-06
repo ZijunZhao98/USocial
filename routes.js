@@ -7,7 +7,7 @@ var User = require('./models/usermodel').User;
 var Travel = require('./models/travelmodel').Travel;
 
 router.get('/', function(req, res){
-  res.send("Hello world");
+  res.render("index");
 });
 
 router.post('/login', function(req, res){
