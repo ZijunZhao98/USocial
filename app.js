@@ -30,7 +30,8 @@ mongoose.connection.on('error', function(err) {
   console.log(err);
   // process.exit(1);
 });
-mongoose.connect(process.env.MONGODB_URI);
+//mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect("mongodb://localhost:27017/exampleDb");
 
 // Handlabars setup
 app.engine('.hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
