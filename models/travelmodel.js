@@ -2,10 +2,11 @@
 
 // Project model
 var mongoose = require('mongoose');
-var user=require('usermodel')
+var User = require('./models/usermodel').User;
+var Schema = mongoose.Schema;
 var Travel = mongoose.model('Travel', new Schema({
   Creator: {
-    type: Schema.Types.user.ObjectId,
+    type: Schema.Types.User.ObjectId,
     required: true
   },
   Destination: {
@@ -29,7 +30,7 @@ var Travel = mongoose.model('Travel', new Schema({
     required: true
   },
   Interested: {
-    type: [Schema.Types.user.ObjectId],
+    type: [Schema.Types.User.ObjectId],
     required: true
   }
 }));
