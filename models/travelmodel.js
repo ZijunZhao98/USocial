@@ -5,8 +5,10 @@ var mongoose = require('mongoose');
 var User = require('./usermodel').User;
 var Schema = mongoose.Schema;
 var Travel = mongoose.model('Travel', new Schema({
+  
   Creator: {
-    type: Schema.Types.User.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
+    // type: User.UserId,
     required: true
   },
   Destination: {
@@ -30,7 +32,7 @@ var Travel = mongoose.model('Travel', new Schema({
     required: true
   },
   Interested: {
-    type: [Schema.Types.User.ObjectId],
+    type: [mongoose.Schema.Types.ObjectId,],
     required: true
   }
 }));
