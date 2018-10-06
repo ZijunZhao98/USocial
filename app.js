@@ -14,6 +14,7 @@ var app = express();
 
 //get mongodb from env.sh
 var mongoose = require('mongoose');
+// var mongodb = require("mongodb").MongoClient;
 
 if (! fs.existsSync('./env.sh')) {
   throw new Error('env.sh file is missing');
@@ -24,8 +25,9 @@ if (! process.env.MONGODB_URI) {
 mongoose.connection.on('connected', function() {
   console.log('Success: connected to MongoDb!');
 });
-mongoose.connection.on('error', function() {
+mongoose.connection.on('error', function(err) {
   console.log('Error connecting to MongoDb. Check MONGODB_URI in env.sh');
+  console.log(err);
   process.exit(1);
 });
 mongoose.connect(process.env.MONGODB_URI);

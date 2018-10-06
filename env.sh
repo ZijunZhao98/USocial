@@ -1,1 +1,1 @@
-export MONGODB_URI="mongodb://zzhao36:jennifer123@ds223763.mlab.com:23763/usocial"
+export MONGODB_URI="mongodb://zzhao36:jennifer123@ds119503.mlab.com:19503/usocial"
