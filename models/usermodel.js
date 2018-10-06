@@ -4,6 +4,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var User = mongoose.model('User', new Schema({
+  UserId:{
+    type: Number,
+    required: true
+  },
   Username: {
     type: String,
     required: true
