@@ -3,7 +3,8 @@
 <div class="container">
   <div class = "row">
     <div class = "col">
-        <img src = "/images/logo.png" alt="logo" id="logo"/>
+      <h1 id='front_page_title'>USocial</h1>
+        <!-- <img src = "/images/logo.png" alt="logo" id="logo"/> -->
     </div>
     <div class = "col">
       <button type="button" id="loginBtn" class="btn btn-primary btns">Login</button>
@@ -11,7 +12,7 @@
     </div>
   </div>
   <div class="row">
-     <h1 id='front_page_title'>USocial</h1>
+
   </div>
 </div>
 
@@ -44,11 +45,11 @@
               <label for="Password">Password: </label>
               <input type="text" class="form-control" name="Password" id="PasswordLogin"/>
           </div>
+          <button type="submit" class="btn btn-primary" id="loginForm">Login</button>
         </form>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="loginForm">Login</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -80,7 +81,7 @@
             </div>
             <div class="form-group">
               <label for="Last_name">Last name: </label>
-              <input type="text" class="form-control" name="Last_Name" id="Last_name, value="{{Last_name}}"">
+              <input type="text" class="form-control" name="Last_name" id="Last_name, value="{{Last_name}}"">
             </div>
             <div class="form-group">
               <label for="Birthday">Birthday: </label>
@@ -106,11 +107,11 @@
               <label for="Major">Major: </label>
               <input type="text" class="form-control" name="Major" id="Major", value="{{Major}}">
             </div>
+            <button type="submit" class="btn btn-primary" id="registerForm">Register</button>
           </form>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="registerForm">register</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

@@ -15,7 +15,7 @@ router.post('/login', function(req, res){
 });
 
 router.post('/register', function(req, res){
-  console.log(0);
+  console.log(req.body);
   req.checkBody('Username', 'please enter Username').notEmpty();
   req.checkBody('Password', 'please enter Password').notEmpty();
   req.checkBody('First_name', 'please enter your first name').notEmpty();
@@ -26,26 +26,13 @@ router.post('/register', function(req, res){
   req.checkBody('Phone_number', 'please enter your phone number').notEmpty();
   req.checkBody('Gender', 'please enter your gender').notEmpty();
   req.checkBody('Major', 'please enter your major').notEmpty();
-  
+
   var error = req.validationErrors();
 
   if(error){
-    res.render('new',{
-      Username:req.body.Username,
-      Password:req.body.Password,
-      First_name: req.body.First_name,
-      Last_name: req.body.Last_name,
-      Birthday: req.body.Birthday,
-      University: req.body.University,
-      Email: req.body.Email,
-      Phone_number: req.body.Phone_number,
-      Gender: req.body.Gender,
-      Major: req.body.Major,
-      errors: error
-    });
+    res.send(error);
   }else{
-    console.log(req.body.category);
-    var user=new User({ 
+    var user = new User({
       Username:req.body.Username,
       Password:req.body.Password,
       First_name: req.body.First_name,
@@ -57,14 +44,16 @@ router.post('/register', function(req, res){
       Gender: req.body.Gender,
       Major: req.body.Major
     });
-    project.save(function(err){
+    user.save(function(err){
       if(!err){
         console.log('success');
         res.redirect('/');
+      }else{
+        console.log('error: ' + err);
       }
     });
   }
-  
+
 });
 
 router.get('/list', function(req, res){
