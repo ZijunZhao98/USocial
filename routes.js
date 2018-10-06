@@ -25,7 +25,8 @@ router.post('/login', function(req, res){
         if(error){
           console.log("error: "+error);
         }
-        else if(docs.length==1){
+        else if(docs.length == 1){
+          res.cookie("userid", docs[0]._id);
           res.redirect('/');
         }
         else{
@@ -36,7 +37,6 @@ router.post('/login', function(req, res){
 });
 
 router.post('/register', function(req, res){
-  console.log(req.body);
   req.checkBody('Username', 'please enter Username').notEmpty();
   req.checkBody('Password', 'please enter Password').notEmpty();
   req.checkBody('First_name', 'please enter your first name').notEmpty();
@@ -82,8 +82,6 @@ router.get('/list', function(req, res){
 });
 
 router.post('/list-creation', function(req, res){
-  console.log(req.body);
-  req.checkBody('Creators', 'please enter Creator name').notEmpty();
   req.checkBody('Destination', 'please enter Destination').notEmpty();
   req.checkBody('Num_of_ppl', 'please enter your Num_of_ppl').notEmpty();
   req.checkBody('From', 'please enter where you are from').notEmpty();
@@ -95,13 +93,12 @@ router.post('/list-creation', function(req, res){
     res.send(error);
   }else{
     var travel = new Travel({
-      Creators:req.body.Creators,
+      Creators:req.cookie.userid,
       Destination:req.body.Destination,
       Num_of_ppl: req.body.Num_of_ppl,
       From: req.body.From,
       To: req.body.To,
       Description: req.body.Description,
-      Interested: req.body.Interested,
     });
     travel.save(function(err){
       if(!err){

@@ -32,7 +32,6 @@ var Travel = mongoose.model('Travel', new Schema({
   },
   Interested: {
     type: [mongoose.Schema.Types.ObjectId,],
-    required: true
   }
 }));
 
