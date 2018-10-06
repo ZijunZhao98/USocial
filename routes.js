@@ -82,8 +82,36 @@ router.get('/list', function(req, res){
 });
 
 router.post('/list-creation', function(req, res){
-
+  console.log(req.body);
+  req.checkBody('Creators', 'please enter Creator name').notEmpty();
+  req.checkBody('Destination', 'please enter Destination').notEmpty();
+  req.checkBody('Num_of_ppl', 'please enter your Num_of_ppl').notEmpty();
+  req.checkBody('From', 'please enter where you are from').notEmpty();
+  req.checkBody('To', 'please enter where you go to').notEmpty();
+  req.checkBody('Description', 'please enter description').notEmpty();
+  req.checkBody('Interested', 'please enter interesting list').notEmpty();
+  var error = req.validationErrors();
+  if(error){
+    res.send(error);
+  }else{
+    var travel = new Travel({
+      Creators:req.body.Creators,
+      Destination:req.body.Destination,
+      Num_of_ppl: req.body.Num_of_ppl,
+      From: req.body.From,
+      To: req.body.To,
+      Description: req.body.Description,
+      Interested: req.body.Interested,
+    });
+    travel.save(function(err){
+      if(!err){
+        console.log('success');
+        res.redirect('/');
+      }else{
+        console.log('error: ' + err);
+      }
+    });
+  }
 });
-
 
 module.exports = router;
