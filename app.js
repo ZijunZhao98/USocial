@@ -28,7 +28,7 @@ mongoose.connection.on('connected', function() {
 mongoose.connection.on('error', function(err) {
   console.log('Error connecting to MongoDb. Check MONGODB_URI in env.sh');
   console.log(err);
-  process.exit(1);
+  // process.exit(1);
 });
 mongoose.connect(process.env.MONGODB_URI);
 
