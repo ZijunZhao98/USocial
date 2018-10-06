@@ -1,0 +1,17 @@
+#front_page_title {
+   font-size: 100px;
+   color: #82529d;
+   font-family: Georgia;
+}
+
+#front_page_image {
+  z-index: -1;
+  height: auto;
+  width: 100%;
+  background-size: cover;
+}
+
+.btns {
+  float: right;
+  margin: 10px;
+}
