@@ -12,6 +12,10 @@ var User = mongoose.model('User', new Schema({
     type: String,
     required: true
   },
+  Password:{
+    type: String,
+    required: true
+  },
   First_name: {
     type: String,
     required: true
