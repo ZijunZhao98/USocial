@@ -78,7 +78,7 @@ router.post('/register', function(req, res){
 });
 
 router.get('/list', function(req, res){
-
+  res.render('list');
 });
 
 router.post('/list-creation', function(req, res){
@@ -106,7 +106,7 @@ router.post('/list-creation', function(req, res){
     travel.save(function(err){
       if(!err){
         console.log('success');
-        res.redirect('/');
+        res.redirect('/list');
       }else{
         console.log('error: ' + err);
       }
