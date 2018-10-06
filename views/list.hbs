@@ -1,11 +1,11 @@
 <button type="button" id="makePostBtn" class="btn btn-outline-primary btns btn-lg">Add a new post!</button>
 
 <div>
-  {{#each this}}
+  {{#each array}}
   <div>
-     <h2>{{Title}}</h2>
-     <h3>{{Destination}}</h3>
-     <h4>Number of desired people: {{Num_of_ppl}}</h4>
+     <h2>{{this.Title}}</h2>
+     <h3>{{this.Destination}}</h3>
+     <h4>Number of desired people: {{this.Num_of_ppl}}</h4>
   </div>
   {{/each}}
 </div>

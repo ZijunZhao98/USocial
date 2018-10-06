@@ -76,7 +76,19 @@ router.post('/register', function(req, res){
 });
 
 router.get('/list', function(req, res){
-  res.render('list');
+  var send = [];
+  var postObj = {};
+  Travel.find(function(error,docs){
+    if(!error){
+      docs.forEach(function(post){
+         console.log(post);
+         send.push(post);
+      });
+      res.render('list', {array: send});
+    }else{
+      res.send(error);
+    }
+  });
 });
 
 router.post('/list-creation', function(req, res){
