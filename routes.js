@@ -11,7 +11,6 @@ router.get('/', function(req, res){
 });
 
 router.post('/login', function(req, res){
-  console.log(req.body);
   req.checkBody('Username_Login', 'please enter Username').notEmpty();
   req.checkBody('Password_Login', 'please enter Password').notEmpty();
   var error = req.validationErrors();
@@ -25,8 +24,9 @@ router.post('/login', function(req, res){
         if(error){
           console.log("error: "+error);
         }
-        else if(docs.length == 1){
-          res.cookie("userid", docs[0]._id);
+        else if(docs.length === 1){
+          res.cookie("userid", docs[0]._id.toString());
+          console.log(req.cookies);
           res.redirect('/');
         }
         else{
@@ -78,6 +78,7 @@ router.post('/register', function(req, res){
 });
 
 router.get('/list', function(req, res){
+  console.log(req.cookies);
   res.render('list');
 });
 
@@ -87,13 +88,12 @@ router.post('/list-creation', function(req, res){
   req.checkBody('From', 'please enter where you are from').notEmpty();
   req.checkBody('To', 'please enter where you go to').notEmpty();
   req.checkBody('Description', 'please enter description').notEmpty();
-  req.checkBody('Interested', 'please enter interesting list').notEmpty();
   var error = req.validationErrors();
   if(error){
     res.send(error);
   }else{
     var travel = new Travel({
-      Creators:req.cookie.userid,
+      Creators:req.cookies.userid,
       Destination:req.body.Destination,
       Num_of_ppl: req.body.Num_of_ppl,
       From: req.body.From,
