@@ -43,48 +43,49 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/login" method="POST">
+        <form action="/register" method="POST">
             <div class="form-group">
               <label for="Username">Username: </label>
-              <input type="text" class="form-control" name="Username" id="UsernameRegister"/>
+              <input type="text" class="form-control" name="Username" id="UsernameRegister", value="{{Username}}"/>
             </div>
             <div class="form-group">
               <label for="Password">Password: </label>
-              <input type="text" class="form-control" name="Password" id="PasswordRegister"/>
+              <input type="text" class="form-control" name="Password" id="PasswordRegister", value="{{Password}}"/>
             </div>
             <div class="form-group">
               <label for="First_name">First name: </label>
-              <input type="text" class="form-control" name="Firstname" id="First_name">
+              <input type="text" class="form-control" name="First_name" id="First_name", value="{{First_name}}">
             </div>
             <div class="form-group">
               <label for="Last_name">Last name: </label>
-              <input type="text" class="form-control" name="LastName" id="Last_name">
+              <input type="text" class="form-control" name="Last_Name" id="Last_name, value="{{Last_name}}"">
             </div>
             <div class="form-group">
               <label for="Birthday">Birthday: </label>
-              <input type="date" class="form-control" name="Birthday" id="Birthday">
+              <input type="date" class="form-control" name="Birthday" id="Birthday", value="{{Birthday}}">
             </div>
             <div class="form-group">
               <label for="University">University: </label>
-              <input type="text" class="form-control" name="University" id="University">
+              <input type="text" class="form-control" name="University" id="University", value="{{University}}">
             </div>
             <div class="form-group">
               <label for="Email">Email: </label>
-              <input type="text" class="form-control" name="Email" id="Email">
+              <input type="text" class="form-control" name="Email" id="Email, value="{{Email}}"">
             </div>
             <div class="form-group">
               <label for="Phone_number">Phone number: </label>
-              <input type="text" class="form-control" name="Phone_number" id="Phone_number">
+              <input type="text" class="form-control" name="Phone_number" id="Phone_number, value="{{Phone_number}}"">
             </div>
             <div class="form-group">
               <label for="Gender">Gender: </label>
-              <input type="text" class="form-control" name="Gender" id="Gender">
+              <input type="text" class="form-control" name="Gender" id="Gender, value="{{Gender}}"">
             </div>
             <div class="form-group">
               <label for="Major">Major: </label>
-              <input type="text" class="form-control" name="Major" id="Major">
+              <input type="text" class="form-control" name="Major" id="Major", value="{{Major}}">
             </div>
           </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="registerForm">register</button>
