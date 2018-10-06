@@ -110,13 +110,21 @@
     </div>
   </div>
 </div>
-
+<div>
+  <form action="/list">
+    <input type="submit" value="view interesting lists">
+  </form>
+</div>
 <script>
    $('#loginBtn').on('click', function(evt){
       evt.preventDefault();
       $('#loginModal').modal('show');
    });
    $('#registerBtn').on('click', function(evt){
+      evt.preventDefault();
+      $('#registerModal').modal('show');
+   });
+   $('#view_list').on('click', function(evt){
       evt.preventDefault();
       $('#registerModal').modal('show');
    });
