@@ -8,6 +8,7 @@ var exphbs  = require('express-handlebars');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var validator = require('express-validator');
 
 var app = express();
@@ -42,6 +43,7 @@ app.use(logger('dev'));
 // Parse req.body contents
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Setup express-validator
 app.use(validator());

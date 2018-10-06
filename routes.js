@@ -25,9 +25,7 @@ router.post('/login', function(req, res){
           console.log("error: "+error);
         }
         else if(docs.length === 1){
-          res.cookie("userid", docs[0]._id.toString());
-          console.log(req.cookies);
-          res.redirect('/');
+          res.cookie("userid", docs[0]._id).redirect("/");
         }
         else{
           console.log("username and password not matched");
@@ -78,7 +76,6 @@ router.post('/register', function(req, res){
 });
 
 router.get('/list', function(req, res){
-  console.log(req.cookies);
   res.render('list');
 });
 
@@ -93,7 +90,7 @@ router.post('/list-creation', function(req, res){
     res.send(error);
   }else{
     var travel = new Travel({
-      Creators:req.cookies.userid,
+      Creator:req.cookies.userid,
       Destination:req.body.Destination,
       Num_of_ppl: req.body.Num_of_ppl,
       From: req.body.From,
