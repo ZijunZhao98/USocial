@@ -14,7 +14,7 @@
       </div>
       <div class="modal-body">
         <form action="/login" method="POST">
-
+          <input type="text" name="title"/>
         </form>
       </div>
       <div class="modal-footer">
@@ -26,5 +26,8 @@
 </div>
 
 <script>
-
+   $('#loginBtn').on('click', function(evt){
+      evt.preventDefault();
+      $('#loginModal').modal('show');
+   });
 </script>
