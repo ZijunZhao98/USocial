@@ -11,7 +11,28 @@ router.get('/', function(req, res){
 });
 
 router.post('/login', function(req, res){
-
+  console.log(req.body);
+  req.checkBody('Username_Login', 'please enter Username').notEmpty();
+  req.checkBody('Password_Login', 'please enter Password').notEmpty();
+  var error = req.validationErrors();
+    if(error){
+      res.send(error);
+    }
+    else{
+      var u1=req.body.Username_Login;
+      var p1=req.body.Password_Login;
+      User.find({Username: u1, Password: p1},function(error,docs){
+        if(error){
+          console.log("error: "+error);
+        }
+        else if(docs.length==1){
+          res.redirect('/');
+        }
+        else{
+          console.log("username and password not matched");
+        }
+      });
+    }
 });
 
 router.post('/register', function(req, res){
