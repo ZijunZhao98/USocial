@@ -81,6 +81,7 @@ router.get('/list', function(req, res){
 
 router.post('/list-creation', function(req, res){
   req.checkBody('Destination', 'please enter Destination').notEmpty();
+  req.checkBody('Title', 'please enter a title').notEmpty();
   req.checkBody('Num_of_ppl', 'please enter your Num_of_ppl').notEmpty();
   req.checkBody('From', 'please enter where you are from').notEmpty();
   req.checkBody('To', 'please enter where you go to').notEmpty();
@@ -91,6 +92,7 @@ router.post('/list-creation', function(req, res){
   }else{
     var travel = new Travel({
       Creator:req.cookies.userid,
+      Title: req.body.Title,
       Destination:req.body.Destination,
       Num_of_ppl: req.body.Num_of_ppl,
       From: req.body.From,

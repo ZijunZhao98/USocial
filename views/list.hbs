@@ -1,5 +1,15 @@
 <button type="button" id="makePostBtn" class="btn btn-outline-primary btns btn-lg">Add a new post!</button>
 
+<div>
+  {{#each this}}
+  <div>
+     <h2>{{Title}}</h2>
+     <h3>{{Destination}}</h3>
+     <h4>Number of desired people: {{Num_of_ppl}}</h4>
+  </div>
+  {{/each}}
+</div>
+
 <div class="modal fade" id="makePostModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -11,6 +21,10 @@
       </div>
       <div class="modal-body">
         <form action="/list-creation" method="POST">
+          <div class="form-group">
+            <label for="Title">Title: </label>
+            <input type="text" min="1" class="form-control" name="Title" id="Title", value="{{Title}}"/>
+          </div>
             <div class="form-group">
               <label for="Destination">Destination: </label>
               <input type="text" class="form-control" name="Destination" id="Destination", value="{{Destination}}"/>
