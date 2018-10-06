@@ -1,0 +1,50 @@
+<button type="button" id="makePostBtn" class="btn btn-outline-primary btns btn-lg">Add a new post!</button>
+
+<div class="modal fade" id="makePostModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Make a new post!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/register" method="POST">
+            <div class="form-group">
+              <label for="Destination">Destination: </label>
+              <input type="text" class="form-control" name="Destination" id="Destination", value="{{Destination}}"/>
+            </div>
+            <div class="form-group">
+              <label for="Num_of_ppl">Number of desired people: </label>
+              <input type="number" class="form-control" name="Num_of_ppl" id="Num_of_ppl", value="{{Num_of_ppl}}"/>
+            </div>
+            <div class="form-group">
+              <label for="From">From: </label>
+              <input type="date" class="form-control" name="From" id="From", value="{{From}}">
+            </div>
+            <div class="form-group">
+              <label for="To">To: </label>
+              <input type="date" class="form-control" name="To" id="To", value="{{To}}">
+            </div>
+            <div class="form-group">
+              <label for="Description">Description: </label>
+              <input type="text" class="form-control" name="Description" id="Description", value="{{Description}}">
+            </div>
+            <button type="submit" class="btn btn-primary" id="makeNewPost">Submit!</button>
+          </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+   $('#makePostBtn').on('click', function(evt){
+      evt.preventDefault();
+      $('#makePostModal').modal('show');
+   });
+</script>
