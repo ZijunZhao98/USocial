@@ -7,17 +7,6 @@
    margin-right: 10px;
 }
 
-#index_page_container{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background-image: url("/images/homepagetoppicture.png");
-  background-size: cover;
-  width: 100%;
-  height: 490px;
-  position: relative;
-}
-
 #logo{
   height: 115px;
   width: auto;
@@ -27,6 +16,11 @@
 #choice_holder{
     display: flex;
     flex-direction: row;
+}
+
+#front_page_image{
+  width: 100%;
+  height: 100%;
 }
 
 #line{
@@ -44,6 +38,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-left: 6%;
+  margin-right: 6%;
 }
 
 #local_description{
@@ -63,12 +59,14 @@
 
 #list_userandprofile{
   width: 150px;
-  margin: 15px;
+  margin: 18px;
+  margin-left: 33px;
+  margin-top: 23px;
 }
 
 #list_words{
   width: 1000px;
-  margin-left: 45px;
+  margin-left: 35px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -79,23 +77,114 @@
   margin-bottom: 3px;
 }
 
+#listContainer{
+  margin-right: 9%;
+  margin-left: 9%;
+}
+
+#check_out{
+  font-family: "Comic Sans MS";
+  font-size: 25px;
+  margin-top: 30px;
+  margin-left: 9%;
+}
+
+#vegas_pic{
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  height: auto;
+}
+
+#interstContainer{
+  display: flex;
+}
+
+#profileContainer{
+  margin-top: 40px;
+  display: flex;
+}
+
+#detail_profile{
+  margin-right: 40px;
+}
+
+#detail_total_Container{
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 30px;
+}
+
+#detail_interested{
+  color: grey;
+  font-family: Impact;
+  font-size: 17px;
+  margin-top: 17px;
+}
+
+#expectingContainer{
+  margin-top: 30px;
+}
+
+#detail_expectation{
+  font-size: 21px;
+  font-family: Impact;
+}
+
+#detail_description{
+  font-family: "Comic Sans MS";
+  font-size: 18px;
+  color: grey;
+}
+
+.pu{
+  color:#82529d;
+  font-family: Impact;
+  font-size: 22px;
+}
+
+.detail_d{
+  font-family: Impact;
+  font-size: 23px;
+  margin-bottom: 1px;
+}
+
 .listP{
   position: absolute;
 }
 
-.listItem{
+.purplelistItem{
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 45px;
   border-radius: 20px;
-  border-style: dotted;
+  border-style: dashed;
   border-width: 3px;
   border-color: #82529d;
 }
 
-.listUsername{
+.yellowlistItem{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 45px;
+  border-radius: 20px;
+  border-style: dashed;
+  border-width: 3px;
+  border-color:rgb(235, 206, 106);
+}
+
+.yellowlistUsername{
   background-color: rgb(235, 206, 106);
+  border-radius: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.purplelistUsername{
+  background-color: #82529d;
   border-radius: 20px;
   text-align: center;
   padding-bottom: 10px;
@@ -116,21 +205,33 @@
   font-weight: bold;
 }
 
-.listU{
+.yellowlistU{
   position: relative;
   margin-top: 128px;
+  margin-left: 14px;
+  font-family: Georgia;
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(235, 206, 106);
+}
+
+.purplelistU{
+  position: relative;
+  margin-top: 128px;
+  margin-left: 14px;
   font-family: Georgia;
   font-size: 28px;
   font-weight: bold;
   color: #82529d;
 }
 
+
 .top_description{
   text-align: center;
   margin-top: 50px;
 }
 
-.localWords{
+.localWords_p{
   color: rgb(235, 206, 106);
   margin-left: 20px;
   font-size: 20px;
@@ -139,16 +240,46 @@
   width: 300px;
 }
 
-.localItem{
+.localWords_y{
+  color: #82529d;
+  margin-left: 20px;
+  font-size: 20px;
+  font-family: Georgia;
+  font-weight: bold;
+  width: 300px;
+}
+
+.purplelocalItem{
   margin: 10px;
   padding-top: 5px;
   background-color: #82529d;
+  width:320px;
+  height: auto;
 }
+
+.yellowlocalItem{
+  margin: 10px;
+  padding-top: 5px;
+  background-color: rgb(235, 206, 106);
+  width:320px;
+  height: auto;
+}
+
+.yellowlocalItem:hover{
+  transform: scale(1.03, 1.03);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.purplelocalItem:hover{
+  transform: scale(1.03, 1.03);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 .localTop{
   padding-left: 35px;
   margin-left: 55px;
-  width: 265px;
+  width: 245px;
 }
 
 .localProfile{
@@ -191,7 +322,6 @@
 .front_page {
   width: 100%;
   height: auto;
-  padding-right: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -200,4 +330,18 @@
 .btns {
   float: right;
   margin: 10px;
+}
+
+.purplelistItem:hover{
+    background-color: #e4d7f2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.yellowlistItem:hover{
+    background-color:#e4d7f2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.postbtn:hover{
+    transform: scale(1.03, 1.03);
 }

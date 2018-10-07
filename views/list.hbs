@@ -2,16 +2,17 @@
   <img src="images/find_travel_pals.png" alt="local student"/>
   <h3 class="description des_title">Find travel pals and plan the trip together</h3>
   <h4 class="description des_subtitle">Explore a whole new city with college students across US!</h4>
-  <a href="#" id="makePostBtn"><img src="images/invite_button.png" alt="invite_btn"/></a>
+  <a href="#" id="makePostBtn" ><img src="images/invite_button.png" class="postbtn" alt="invite_btn"/></a>
 </div>
 
 
 <div id="listContainer">
   {{#each array}}
-  <div class="listItem">
+  {{#if this.Yellow}}
+  <div class="purplelistItem travelItem" id={{this.id}}>
      <div id="list_userandprofile">
          <img src={{this.Profile}} class="listP"> </img>
-         <p class="listWord listUsername listU">{{this.Username}}</p>
+         <p class="yellowlistUsername purplelistU">{{this.Username}}</p>
      </div>
      <div id="list_words">
          <p id="listSchool">{{this.School}}</p>
@@ -20,6 +21,20 @@
          <p id="local_description">"{{this.Description}}"</p>
      </div>
   </div>
+  {{else}}
+  <div class="yellowlistItem travelItem" id={{this.id}}>
+     <div id="list_userandprofile">
+         <img src={{this.Profile}} class="listP"> </img>
+         <p class="purplelistUsername yellowlistU">{{this.Username}}</p>
+     </div>
+     <div id="list_words">
+         <p id="listSchool">{{this.School}}</p>
+         <p class="listWord">To <span class="purple">{{this.Location}}</span></p>
+         <p class="listWord">During <span class="purple">{{this.FromDay}} - {{this.ToDay}}</span></p>
+         <p id="local_description">"{{this.Description}}"</p>
+     </div>
+  </div>
+  {{/if}}
   {{/each}}
 </div>
 
@@ -68,19 +83,29 @@
 </div>
 
 <script>
-   $('#makePostBtn').on('click', function(evt){
-      evt.preventDefault();
-      $('#makePostModal').modal('show');
-   });
-    $("#To").change(function(){
-      var this_time=$('#From').val();
-     var this_datetime=new Date(this_time);
-      var that_time=$('#To').val();
-      var that_datetime=new Date(that_time);
-     if(this_datetime>that_datetime){
-       alert("From date should be before To date");
-       $("#To").val("");
-       $("#From").val("");
-      }
+    $(document).ready( function() {
+        $('#makePostBtn').on('click', function(evt){
+           evt.preventDefault();
+           $('#makePostModal').modal('show');
+        });
+         $("#To").change(function(){
+           var this_time=$('#From').val();
+          var this_datetime=new Date(this_time);
+           var that_time=$('#To').val();
+           var that_datetime=new Date(that_time);
+          if(this_datetime>that_datetime){
+            alert("From date should be before To date");
+            $("#To").val("");
+            $("#From").val("");
+           }
+         });
+
+        $('.travelItem').on('click', function(evt){
+          evt.preventDefault();
+          url = "/travel_post/" + evt.target.id;
+          console.log(event.target);
+          $( location ).attr("href", url);
+        })
     });
+
 </script>

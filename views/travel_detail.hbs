@@ -1,0 +1,31 @@
+<p id="check_out">Let's check out this invitation!</p>
+
+<img id="vegas_pic" src="/images/vegasbackground.png" alt="vegas background"/>
+
+<div id="detail_total_Container">
+    <div id="interstContainer">
+      {{#unless interested}}
+      <form method="POST" action="/travel_post/{{id}}">
+        <input type="image" src="/images/showinterest button.png"/>
+      </form>
+      {{else}}
+        <img  src="/images/showedinteretedbutton.png"/>
+      {{/unless}}
+      <p id="detail_interested">{{Interested}} are interested in this invitation.</p>
+    </div>
+
+    <div id="profileContainer">
+      <img src={{Profile}} id="detail_profile" alt="profile picture">
+      <div>
+          <p class="detail_d"><span class="pu">{{Username}}</span> from <span class="pu">{{School}}</span></p>
+          <p class="detail_d">Excepting <span class="pu">{{Num_of_ppl}}</span> {{people}} to join the trip.</p>
+          <p class="detail_d">To: <span class="pu">{{Destination}}</span></p>
+          <p class="detail_d">From: <span class="pu">{{FromDay}}</span> to <span class="pu">{{ToDay}}</span></p>
+      </div>
+    </div>
+
+    <div id="expectingContainer">
+      <p id="detail_expectation">{{Username}} is expecting...</p>
+      <p id="detail_description">"{{Description}}"</p>
+    </div>
+</div>

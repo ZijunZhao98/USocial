@@ -87,6 +87,7 @@ router.get('/list', function(req, res){
   var postObj = {};
   Travel.find(function(error,docs){
     if(!error){
+      var i = 0;
       docs.forEach(function(post){
         var tf = new Date(post.From);
         var tt = new Date(post.To);
@@ -98,8 +99,15 @@ router.get('/list', function(req, res){
            Location: post.Destination,
            FromDay: (tf.getMonth() + 1) + "/" + (tf.getDate()+1),
            ToDay: (tt.getMonth() + 1) + "/" + (tt.getDate()+1),
-           Description: post.Description
+           Description: post.Description,
+           id: post._id
          }
+         if(i%2 === 0){
+           postObj["Yellow"] = false;
+         }else{
+           postObj["Yellow"] = true;
+         }
+         i++;
          send.push(postObj);
       });
       if(req.cookies.userid){
@@ -164,6 +172,7 @@ router.post('/list-creation', function(req, res){
 router.get('/local', function(req, res){
   var send = [];
   var postObj = {};
+  var i = 0;
   Local.find().then(function(docs){
       docs.forEach(function(post){
         var t = new Date(post.Time);
@@ -176,6 +185,12 @@ router.get('/local', function(req, res){
            Time: (t.getMonth() + 1) + "/" + (t.getDate()+1),
            Picture: post.Picture
          }
+         if(i%2 === 0){
+           postObj["Yellow"] = false;
+         }else{
+           postObj["Yellow"] = true;
+         }
+         i++;
          send.push(postObj);
       })
 
@@ -220,6 +235,60 @@ router.post('/local', function(req, res){
       });
     });
   }
+});
+
+router.get('/travel_post/:id', function(req, res){
+    Travel.findById(req.params.id, function(err, travel){
+      if(!err){
+        var tf = new Date(travel.From);
+        var tt = new Date(travel.To);
+        var people = "person";
+        var numOfInterested;
+        var interested = false;
+        if(travel.Num_of_ppl > 1){
+          people="people";
+        }
+        if(!travel.Interested.length){
+          numOfInterested = 0;
+        }else{
+          numOfInterested = travel.Interested.length;
+        }
+        if(travel.Interested.includes(req.cookies.userid)){
+          interested = true;
+        }
+        res.render('travel_detail',{
+          id: travel._id,
+          Username: travel.Username,
+          Profile: travel.Profile,
+          School: travel.School,
+          Num_of_ppl: travel.Num_of_ppl,
+          Description: travel.Description,
+          Destination: travel.Destination,
+          Interested: numOfInterested,
+          people: people,
+          interested: interested,
+          FromDay: (tf.getMonth() + 1) + " " + (tf.getDate()+1),
+          ToDay: (tt.getMonth() + 1) + " " + (tt.getDate()+1)
+        });
+      }else{
+        res.send(err);
+      }
+    });
+});
+
+router.post('/travel_post/:id', function(req, res){
+  Travel.findById(req.params.id, function(err, travel){
+
+      travel.Interested.push(req.cookies.userid);
+      travel.save(function(err){
+        if(!err){
+            console.log('save success');
+        }
+      });
+      if(!err){
+        res.redirect('/travel_post/'+req.params.id);
+      }
+  });
 });
 
 router.post('/logout', function(req, res){

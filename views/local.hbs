@@ -2,20 +2,32 @@
   <img src="images/meet_local_students.png" alt="local student"/>
   <h3 class="description des_title">Get together for local events.</h3>
   <h4 class="description des_subtitle">Go to local events with nearby students who share the same interests with you!</h4>
-  <a href="#" id="makeLocalBtn"><img src="images/invite_button.png" alt="invite_btn"/></a>
+  <a href="#" id="makeLocalBtn"><img src="images/invite_button.png" class="postbtn" alt="invite_btn"/></a>
 </div>
 
 <div id="localContainer">
   {{#each array}}
-  <div class="localItem">
-    <img src="{{this.Profile}}" alt="profile image" class="localProfile"></img>
-      <p class="localWords localTop" id="localU">{{this.Username}}</p>
-      <p class="localWords localTop">{{this.School}}</p>
-     <img src={{this.Picture}} style="width:320px;height:auto;"> </img>
-     <p class="localWords" style="margin-top: 10px;">☆  {{this.Event}}</p>
-     <p class="localWords">☆  {{this.Location}}</p>
-     <p class="localWords">☆  {{this.Time}}</p>
-  </div>
+  {{#if this.Yellow}}
+     <div class="yellowlocalItem">
+         <img src="{{this.Profile}}" alt="profile image" class="localProfile"></img>
+         <p class="localWords_y localTop" id="localU">{{this.Username}}</p>
+         <p class="localWords_y localTop">{{this.School}}</p>
+         <img src={{this.Picture}} style="width:320px;height:auto;"> </img>
+         <p class="localWords_y" style="margin-top: 10px;">☆  {{this.Event}}</p>
+         <p class="localWords_y">☆  {{this.Location}}</p>
+         <p class="localWords_y">☆  {{this.Time}}</p>
+     </div>
+ {{else}}
+     <div class="purplelocalItem">
+          <img src="{{this.Profile}}" alt="profile image" class="localProfile"></img>
+          <p class="localWords_p localTop" id="localU">{{this.Username}}</p>
+          <p class="localWords_p localTop">{{this.School}}</p>
+          <img src={{this.Picture}} style="width:320px;height:auto;"> </img>
+          <p class="localWords_p" style="margin-top: 10px;">☆  {{this.Event}}</p>
+          <p class="localWords_p">☆  {{this.Location}}</p>
+          <p class="localWords_p">☆  {{this.Time}}</p>
+    </div>
+  {{/if}}
   {{/each}}
 </div>
 
