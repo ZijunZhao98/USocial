@@ -271,7 +271,7 @@ router.get('/travel_post/:id', function(req, res){
           ToDay: (tt.getMonth() + 1) + " " + (tt.getDate()+1)
         });
       }else{
-        res.redirect('/travel_post/'+req.params.id);
+        res.send(err);
       }
     });
 });
