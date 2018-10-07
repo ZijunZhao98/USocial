@@ -13,7 +13,7 @@ router.get('/', function(req, res){
       ifLoggedIn = {user: true};
   }
   res.render("index", ifLoggedIn);
-});
+});   
 
 router.post('/login', function(req, res){
   req.checkBody('Username_Login', 'please enter Username').notEmpty();
