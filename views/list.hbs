@@ -1,12 +1,24 @@
-<button type="button" id="makePostBtn" class="btn btn-outline-primary btns btn-lg">Add a new post!</button>
+<div class="top_description">
+  <img src="images/find_travel_pals.png" alt="local student"/>
+  <h3 class="description des_title">Find travel pals and plan the trip together</h3>
+  <h4 class="description des_subtitle">Explore a whole new city with college students across US!</h4>
+  <a href="#" id="makePostBtn"><img src="images/invite_button.png" alt="invite_btn"/></a>
+</div>
 
-<div>
+
+<div id="listContainer">
   {{#each array}}
-  <div>
-     <h2>{{this.Title}}</h2>
-     <h3>{{this.Destination}}</h3>
-     <h4>Number of desired people: {{this.Num_of_ppl}}</h4>
-     <img  src={{this.Picture}}> </img>
+  <div class="listItem">
+     <div id="list_userandprofile">
+         <img src={{this.Profile}} class="listP"> </img>
+         <p class="listWord listUsername listU">{{this.Username}}</p>
+     </div>
+     <div id="list_words">
+         <p id="listSchool">{{this.School}}</p>
+         <p class="listWord">To <span class="purple">{{this.Location}}</span></p>
+         <p class="listWord">During <span class="purple">{{this.FromDay}} - {{this.ToDay}}</span></p>
+         <p id="local_description">"{{this.Description}}"</p>
+     </div>
   </div>
   {{/each}}
 </div>
@@ -22,10 +34,6 @@
       </div>
       <div class="modal-body">
         <form action="/list-creation" method="POST">
-          <div class="form-group">
-            <label for="Title">Title: </label>
-            <input type="text" min="1" class="form-control" name="Title" id="Title", value="{{Title}}"/>
-          </div>
             <div class="form-group">
               <label for="Destination">Destination: </label>
               <input type="text" class="form-control" name="Destination" id="Destination", value="{{Destination}}"/>
@@ -42,12 +50,7 @@
               <label for="To">To: </label>
               <input type="date" class="form-control" name="To" id="To", value="{{To}}">
             </div>
-            <div class="form-group">
-              <label for="Picture">Upload picture: </label>
-              <input type="file", id="Picture", name="Picture", onchange="xmTanUploadImg(this)", accept="image/*", value="{{Picture}}"/>
-              <img id="Img"/>
-            </div>
-            
+
             <div class="form-group">
               <label for="Description">Description: </label>
               {{!-- <input type="textarea" class="form-control" name="Description" id="Description", value="{{Description}}"> --}}
@@ -78,20 +81,6 @@
        alert("From date should be before To date");
        $("#To").val("");
        $("#From").val("");
-            }
+      }
     });
-
-    function xmTanUploadImg(obj) {
-        var file = obj.files[0];
-        var reader = new FileReader();
-        
-        reader.onload = function (e) {
-            console.log("成功读取....");
-            var img = document.getElementById("Img");
-            img.src = e.target.result;
-            
-        }
-        reader.readAsDataURL(file)
-    }
-  
 </script>

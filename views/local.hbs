@@ -1,0 +1,81 @@
+<div class="top_description">
+  <img src="images/meet_local_students.png" alt="local student"/>
+  <h3 class="description des_title">Get together for local events.</h3>
+  <h4 class="description des_subtitle">Go to local events with nearby students who share the same interests with you!</h4>
+  <a href="#" id="makeLocalBtn"><img src="images/invite_button.png" alt="invite_btn"/></a>
+</div>
+
+<div id="localContainer">
+  {{#each array}}
+  <div class="localItem">
+     <img src={{this.Picture}} style="width:320px;height:auto;"> </img>
+     <p class="localWords" style="margin-top: 10px;">☆  {{this.Event}}</p>
+     <p class="localWords">☆  {{this.Location}}</p>
+     <p class="localWords">☆  {{this.Time}}</p>
+  </div>
+  {{/each}}
+</div>
+
+<div class="modal fade" id="makeLocalModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Make a new post!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/local" method="POST">
+          <div class="form-group">
+            <label for="Location">Location: </label>
+            <input type="text" min="1" class="form-control" name="Location" id="Location", value="{{Location}}"/>
+          </div>
+            <div class="form-group">
+              <label for="Event">Event: </label>
+              <input type="text" class="form-control" name="Event" id="Event", value="{{Event}}"/>
+            </div>
+            <div class="form-group">
+              <label for="Day">Day: </label>
+              <input type="date" class="form-control" name="Day" id="Day", value="{{Day}}">
+            </div>
+
+            <div class="form-group">
+              <label for="Picture">Upload picture: </label>
+              <input type="file" onchange="addImg()">
+              <img class="thumbnail" style="width:470px;height:600px;" src="images/yourstory_AppFriday_EventsHigh.jpg" id="new-img" alt="icon img"/>
+              <input type="hidden" id="img_src" name="img_src" value="" />
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="makeNewLocal">Submit!</button>
+          </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+   $('#makeLocalBtn').on('click', function(evt){
+      evt.preventDefault();
+      $('#makeLocalModal').modal('show');
+   });
+
+   function addImg(){
+       var reader = new FileReader();
+       var file = document.querySelector('input[type=file]').files[0];
+
+       reader.onloadend = function(){
+           $('#new-img').attr("src", reader.result);
+           $('#img_src').val(reader.result);
+       }
+
+       if(file){
+           reader.readAsDataURL(file);
+       }
+   }
+
+</script>

@@ -1,24 +1,177 @@
-#title_container{
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
 #front_page_title {
    font-size: 70px;
    color: #82529d;
    font-family: Georgia;
+   width: auto;
+   text-align: right;
+   margin-right: 10px;
 }
 
-#logo{
-  height: 170px;
-  width: auto;
-}
-
-.front_page {
+#index_page_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   background-image: url("/images/homepagetoppicture.png");
   background-size: cover;
   width: 100%;
-  height: 430px;
+  height: 490px;
+  position: relative;
+}
+
+#logo{
+  height: 115px;
+  width: auto;
+  z-index: 1;
+}
+
+#choice_holder{
+    display: flex;
+    flex-direction: row;
+}
+
+#line{
+  width:100%;
+  height:auto;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  padding-top: 80px;
+}
+
+#localContainer{
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#local_description{
+  font-style: italic;
+  color: grey;
+  font-family: Georgia;
+  font-size: 20px;
+}
+
+#listSchool{
+  color: #626263;
+  font-style: italic;
+  font-family: Georgia;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+#list_userandprofile{
+  width: 150px;
+  margin: 15px;
+}
+
+#list_words{
+  width: 1000px;
+  margin-left: 45px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.listP{
+  position: absolute;
+}
+
+.listItem{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 45px;
+  border-radius: 20px;
+  border-style: dotted;
+  border-width: 3px;
+  border-color: #82529d;
+}
+
+.listUsername{
+  background-color: rgb(235, 206, 106);
+  border-radius: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.purple{
+  color: #82529d;
+  font-family: Georgia;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.listWord{
+  color: #4b4b4c;
+  font-family: Georgia;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.listU{
+  position: relative;
+  margin-top: 128px;
+  font-family: Georgia;
+  font-size: 28px;
+  font-weight: bold;
+  color: #82529d;
+}
+
+.top_description{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.localWords{
+  color: rgb(235, 206, 106);
+  margin-left: 20px;
+  font-size: 20px;
+  font-family: Georgia;
+}
+
+.localItem{
+  margin: 10px;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  background-color: #82529d;
+}
+
+.description{
+  font-family: Georgia;
+  font-style: italic;
+}
+
+.des_title{
+   font-size: 40px;
+  font-weight: bold;
+}
+
+.des_subtitle{
+   font-size: 30px;
+}
+
+.main_layout{
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.choices{
+    height: 35px;
+    width: auto;
+    margin: 15px;
+    margin-top: 35px;
+}
+
+.front_page {
+  width: 100%;
+  height: auto;
   padding-right: 30px;
   display: flex;
   flex-direction: column;

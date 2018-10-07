@@ -3,50 +3,37 @@
 // Project model
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Travel = mongoose.model('Travel', new Schema({
-
+var Local = mongoose.model('Local', new Schema({
   Creator: {
     type: mongoose.Schema.Types.ObjectId,
     // type: User.UserId,
     required: true
   },
-  Username:{
+  Location: {
     type: String,
     required: true
   },
-  School:{
+  Event: {
     type: String,
     required: true
   },
-  Profile:{
-    type: String,
-    requred: true
-  },
-  Destination: {
-    type: String,
-    required: true
-  },
-  Num_of_ppl: {
-    type: Number,
-    required: true
-  },
-  From: {
+  Time: {
     type: Date,
     required: true
   },
-  To: {
-    type: Date,
-    required: true
-  },
-  Description: {
-    type: String,
-    required: true
-  },
+  // Description: {
+  //   type: String,
+  //   required: true
+  // },
   Interested: {
     type: [mongoose.Schema.Types.ObjectId,]
+  },
+  Picture:{
+    type:String,
+    required: true
   }
 }));
 
 module.exports = {
-  Travel: Travel
+  Local: Local
 }
