@@ -25,7 +25,10 @@ router.post('/login', function(req, res){
           console.log("error: "+error);
         }
         else if(docs.length === 1){
+          console.log(req);
+          console.log(res);
           res.cookie("userid", docs[0]._id).redirect("/");
+          
         }
         else{
           console.log("username and password not matched");
@@ -40,6 +43,7 @@ router.post('/register', function(req, res){
   req.checkBody('First_name', 'please enter your first name').notEmpty();
   req.checkBody('Last_name', 'please enter your last name').notEmpty();
   req.checkBody('Birthday', 'please enter your birthday').notEmpty();
+  req.checkBody('Birthday', 'please enter your birthday').isDate();
   req.checkBody('University', 'please enter your university').notEmpty();
   req.checkBody('Email', 'please enter your email').notEmpty();
   req.checkBody('Phone_number', 'please enter your phone number').notEmpty();
@@ -98,6 +102,7 @@ router.post('/list-creation', function(req, res){
   req.checkBody('From', 'please enter where you are from').notEmpty();
   req.checkBody('To', 'please enter where you go to').notEmpty();
   req.checkBody('Description', 'please enter description').notEmpty();
+  // req.checkBody('Picture', 'please upload picture').notEmpty();
   var error = req.validationErrors();
   if(error){
     res.send(error);
@@ -110,6 +115,7 @@ router.post('/list-creation', function(req, res){
       From: req.body.From,
       To: req.body.To,
       Description: req.body.Description,
+      Picture: req.body.picture
     });
     travel.save(function(err){
       if(!err){
