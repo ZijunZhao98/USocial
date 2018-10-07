@@ -74,6 +74,11 @@
   flex-direction: column;
 }
 
+#localU{
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
 .listP{
   position: absolute;
 }
@@ -130,13 +135,27 @@
   margin-left: 20px;
   font-size: 20px;
   font-family: Georgia;
+  font-weight: bold;
+  width: 300px;
 }
 
 .localItem{
   margin: 10px;
-  padding-top: 30px;
-  padding-bottom: 5px;
+  padding-top: 5px;
   background-color: #82529d;
+}
+
+.localTop{
+  padding-left: 35px;
+  margin-left: 55px;
+  width: 265px;
+}
+
+.localProfile{
+  width:80px;
+  height: 80px;
+  z-index: 2;
+  float: left;
 }
 
 .description{

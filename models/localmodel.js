@@ -9,6 +9,18 @@ var Local = mongoose.model('Local', new Schema({
     // type: User.UserId,
     required: true
   },
+  Username:{
+    type: String,
+    required: true
+  },
+  School:{
+    type: String,
+    required: true
+  },
+  Profile:{
+    type: String,
+    requred: true
+  },
   Location: {
     type: String,
     required: true

@@ -168,6 +168,9 @@ router.get('/local', function(req, res){
       docs.forEach(function(post){
         var t = new Date(post.Time);
         postObj = {
+           Profile: post.Profile,
+           Username: post.Username,
+           School: post.School,
            Event: post.Event,
            Location: post.Location,
            Time: (t.getMonth() + 1) + "/" + (t.getDate()+1),
@@ -195,21 +198,26 @@ router.post('/local', function(req, res){
   if(error){
     res.send(error);
   }else{
-    var Day = new Date(req.body.Day);
-    var local = new Local({
-      Creator:req.cookies.userid,
-      Location: req.body.Location,
-      Event: req.body.Event,
-      Time: Day,
-      Picture: req.body.img_src
-    });
-    local.save(function(err){
-      if(!err){
-        console.log('success');
-        res.redirect('/local');
-      }else{
-        console.log('error: ' + err);
-      }
+    User.findOne({_id: req.cookies.userid}, function(err, creator){
+      var Day = new Date(req.body.Day);
+      var local = new Local({
+        Creator:req.cookies.userid,
+        School: creator.University,
+        Username: creator.Username,
+        Profile: creator.Profile,
+        Location: req.body.Location,
+        Event: req.body.Event,
+        Time: Day,
+        Picture: req.body.img_src
+      });
+      local.save(function(err){
+        if(!err){
+          console.log('success');
+          res.redirect('/local');
+        }else{
+          console.log('error: ' + err);
+        }
+      });
     });
   }
 });

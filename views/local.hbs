@@ -8,6 +8,9 @@
 <div id="localContainer">
   {{#each array}}
   <div class="localItem">
+    <img src="{{this.Profile}}" alt="profile image" class="localProfile"></img>
+      <p class="localWords localTop" id="localU">{{this.Username}}</p>
+      <p class="localWords localTop">{{this.School}}</p>
      <img src={{this.Picture}} style="width:320px;height:auto;"> </img>
      <p class="localWords" style="margin-top: 10px;">☆  {{this.Event}}</p>
      <p class="localWords">☆  {{this.Location}}</p>
